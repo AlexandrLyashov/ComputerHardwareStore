@@ -1,27 +1,50 @@
-# ComputerHardwareStore
+# Computer Hardware Store (Angular)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+Веб-додаток інтернет-магазину комп’ютерної техніки на **Angular**.  
+Каталог товарів, кошик, сторінка оформлення замовлення, детальні сторінки товарів, адаптивний дизайн.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Функціональність
+-  **Каталог**: список товарів із ціною, наявністю, картинкою.
+-  **Детальна сторінка товару**: опис, ціна, кнопка додавання до кошика.
+-  **Кошик**: перегляд позицій, зміна кількості, видалення, підсумок.
+-  **Checkout**: форма даних отримувача, способи доставки/оплати, валідація, підтвердження.
+-  **Навігація**: хедер/футер, breadcrumbs (крихти) на деталці.
+- 🖼 **Оптимізація зображень**: assets, коректні пропорції, без мерехтіння.
+-  **Адаптивність**: коректне відображення на мобільних/планшетах/десктопах.
 
-## Code scaffolding
+---
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+##  Скріншоти
 
-## Build
+###  Головна сторінка
+![Home](docs/screenshots/home.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+###  Каталог
+![Products](docs/screenshots/products.png)
 
-## Running unit tests
+###  Кошик
+![Cart](docs/screenshots/cart.png)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Оформлення замовлення
+![Checkout](docs/screenshots/checkout.png)
 
-## Running end-to-end tests
+---
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Технології
+- **Angular** 17+ (Standalone Components, Signals)
+- **TypeScript**
+- **Angular Router**
+- **Reactive Forms**
+- **SCSS/CSS**, утилітарні класи
+- **ESLint + Prettier** (за потреби)
 
-## Further help
+---
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Вимоги
+- Node.js 18+  
+- npm 9+  
+- Angular CLI :  
+  ```bash
+  npm i -g @angular/cli
