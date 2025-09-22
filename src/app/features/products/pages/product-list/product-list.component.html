@@ -1,1 +1,23 @@
-<p>product-list works!</p>
+<h1 class="page-title">Каталог</h1>
+
+<div class="grid">
+  <div class="card" *ngFor="let p of products">
+    <div class="img-wrap">
+      <img [src]="p.img" [alt]="p.title" loading="lazy" />
+    </div>
+
+    <h3 class="title">{{ p.title }}</h3>
+    <div class="muted">{{ p.short }}</div>
+
+    <div class="row">
+      <div class="price">{{ p.price | currency:'USD' }}</div>
+      <div class="stock" [class.low]="p.stock < 6">
+        В наявності: {{ p.stock }}
+      </div>
+    </div>
+
+    <button class="btn btn-primary" (click)="addToCart(p)">
+      Додати в кошик
+    </button>
+  </div>
+</div>

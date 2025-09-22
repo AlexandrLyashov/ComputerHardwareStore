@@ -1,0 +1,19 @@
+<header class="navbar">
+  <div class="container">
+    <a class="brand" routerLink="/">
+      <span class="logo">🖥️</span>
+      <span class="title">Computer <span class="accent">Hardware</span> Store</span>
+    </a>
+
+    <nav class="nav">
+      <a routerLink="/products" routerLinkActive="active" class="nav-link">Каталог</a>
+
+      <a routerLink="/cart" routerLinkActive="active" class="nav-link cart-link">
+        Кошик
+        <span *ngIf="cart.count() as c" class="badge" [class.hide]="!c">{{ c }}</span>
+      </a>
+
+      <a routerLink="/checkout" routerLinkActive="active" class="nav-link">Оформлення</a>
+    </nav>
+  </div>
+</header>

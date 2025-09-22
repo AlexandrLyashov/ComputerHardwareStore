@@ -1,0 +1,121 @@
+
+<section class="hero">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <h1>Computer <span>Hardware</span> Store</h1>
+      <p class="subtitle">
+        Обирай комплектуючі, збирай кошик і оформлюй замовлення — усе в одному місці.
+      </p>
+
+      <div class="hero__actions">
+        <a routerLink="/products" class="btn btn-primary">Переглянути товари</a>
+        <a routerLink="/cart" class="btn btn-light">Кошик</a>
+        <a routerLink="/checkout" class="btn btn-ghost">Оформлення</a>
+      </div>
+
+      <ul class="hero__stats">
+        <li><strong>1000+</strong><span>товарів у каталозі</span></li>
+        <li><strong>4.9/5</strong><span>оцінка клієнтів</span></li>
+        <li><strong>24/7</strong><span>підтримка</span></li>
+      </ul>
+    </div>
+
+    <div class="hero__art">
+      <img src="assets/images/heropc.jpg" alt="High-end PC" />
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <h2 class="section__title">Категорії</h2>
+  <div class="grid grid-4">
+    <a class="cat" routerLink="/products" fragment="cpu">
+      <img src="assets/images/CPU.jpg" alt="CPU" />
+      <div class="cat__title">Процесори</div>
+    </a>
+
+    <a class="cat" routerLink="/products" fragment="gpu">
+      <img src="assets/images/GPU.jpg" alt="GPU" />
+      <div class="cat__title">Відеокарти</div>
+    </a>
+
+    <a class="cat" routerLink="/products" fragment="ram">
+      <img src="assets/images/RAM.jpg" alt="RAM" />
+      <div class="cat__title">Оперативна памʼять</div>
+    </a>
+
+    <a class="cat" routerLink="/products" fragment="ssd">
+      <img src="assets/images/SSD.jpg" alt="SSD" />
+      <div class="cat__title">Накопичувачі</div>
+    </a>
+  </div>
+</section>
+
+
+<section class="section">
+  <h2 class="section__title">Чому ми?</h2>
+  <div class="grid grid-3">
+    <div class="card adv">
+      <div class="adv__icon">🚚</div>
+      <h3>Швидка доставка</h3>
+      <p>Відправляємо того ж дня. Самовивіз — безкоштовно.</p>
+    </div>
+    <div class="card adv">
+      <div class="adv__icon">🛡️</div>
+      <h3>Офіційна гарантія</h3>
+      <p>Тільки нові й сертифіковані товари з гарантією.</p>
+    </div>
+    <div class="card adv">
+      <div class="adv__icon">💬</div>
+      <h3>Підтримка 24/7</h3>
+      <p>Допоможемо підібрати комплектуючі та вирішити питання.</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="section__title-row">
+    <h2 class="section__title">Популярне зараз</h2>
+    <a routerLink="/products" class="link">Дивитися всі →</a>
+  </div>
+
+  <div class="grid grid-3">
+    <a class="card prod" routerLink="/products">
+      <div class="prod__body">
+        <h3>Intel Core i5-13600K</h3>
+        <div class="muted">14 ядер • до 5.1 ГГц</div>
+        <div class="prod__price">$299.00</div>
+      </div>
+    </a>
+
+    <a class="card prod" routerLink="/products">
+      <div class="prod__body">
+        <h3>AMD Ryzen 7 7800X3D</h3>
+        <div class="muted">3D V-Cache • ігровий монстр</div>
+        <div class="prod__price">$429.00</div>
+      </div>
+    </a>
+
+    <a class="card prod" routerLink="/products">
+      <div class="prod__body">
+        <h3>NVIDIA GeForce RTX 4070</h3>
+        <div class="muted">12 GB GDDR6X • DLSS 3</div>
+        <div class="prod__price">$549.00</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+
+<section class="cta">
+  <div class="cta__inner">
+    <h2>Готові зібрати ідеальну систему?</h2>
+    <p>Перейдіть у каталог та оберіть комплектуючі під ваші задачі.</p>
+    <div class="cta__actions">
+      <a routerLink="/products" class="btn btn-primary">До каталогу</a>
+      <a routerLink="/cart" class="btn btn-light">В мій кошик</a>
+    </div>
+  </div>
+</section>

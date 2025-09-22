@@ -1,1 +1,52 @@
-<p>product-detail works!</p>
+<div *ngIf="!product()" class="container">
+  <p class="muted">Товар не знайдений.</p>
+  <a routerLink="/products" class="btn btn-light">← До каталогу</a>
+</div>
+
+<div *ngIf="product() as p" class="container">
+
+  <nav class="crumbs">
+    <a *ngFor="let c of crumbs(); let last = last"
+       [routerLink]="c.link" [class.muted]="last || !c.link">
+      {{ c.title }} <span *ngIf="!last">/</span>
+    </a>
+  </nav>
+
+  <section class="card detail">
+    <div class="media">
+      <img [src]="p.img" [alt]="p.title" />
+      <div class="thumbs" *ngIf="p.gallery?.length">
+        <img *ngFor="let g of p.gallery" [src]="g" [alt]="p.title" />
+      </div>
+    </div>
+
+    <div class="info">
+      <h1 class="title">{{ p.title }}</h1>
+      <div class="muted">{{ p.short }}</div>
+
+      <div class="price-row">
+        <div class="price">{{ p.price | currency:'USD' }}</div>
+        <div class="stock" [class.low]="p.stock < 5">
+          В наявності: {{ p.stock }}
+        </div>
+      </div>
+
+      <p class="desc">{{ p.description }}</p>
+
+      <div class="actions">
+        <button class="btn btn-primary" (click)="addToCart(p)">Додати в кошик</button>
+        <a routerLink="/products" class="btn btn-light">До каталогу</a>
+      </div>
+
+      <div *ngIf="p.specs" class="specs">
+        <h3>Характеристики</h3>
+        <table>
+          <tr *ngFor="let key of (p.specs | keyvalue)">
+            <td class="key">{{ key.key }}</td>
+            <td class="val">{{ key.value }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>

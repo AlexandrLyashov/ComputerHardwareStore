@@ -1,1 +1,59 @@
-<p>cart-page works!</p>
+<h1 class="page-title">Кошик</h1>
+
+
+<div *ngIf="items().length === 0" class="empty">
+  <p>Кошик порожній</p>
+  <a routerLink="/products" class="btn btn-primary">Перейти до каталогу</a>
+</div>
+
+
+<div *ngIf="items().length > 0" class="cart">
+  <section class="card cart-list">
+    <div class="header">
+      <h2>Товари</h2>
+      <button class="btn btn-light" (click)="clear()">Очистити кошик</button>
+    </div>
+
+    <ul class="list">
+      <li class="row" *ngFor="let ci of items(); trackBy: trackByItem">
+        <img [src]="ci.product.img" [alt]="ci.product.title" />
+        <div class="info">
+          <a class="title" [routerLink]="['/products', ci.product.id]">
+            {{ ci.product.title }}
+          </a>
+          <div class="muted">{{ ci.product.short }}</div>
+
+          <div class="controls">
+            <div class="qty">
+              <button (click)="dec(ci)" aria-label="менше">−</button>
+              <span>{{ ci.qty }}</span>
+              <button (click)="inc(ci)" aria-label="більше">+</button>
+            </div>
+
+            <a class="remove" (click)="remove(ci.product.id)">Видалити</a>
+          </div>
+        </div>
+
+        <div class="price">
+          {{ ci.product.price | currency:'USD' }}
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <aside class="card summary">
+    <h2>Підсумок</h2>
+
+    <div class="totals">
+      <div>
+        <span>Проміжний підсумок</span>
+        <strong>{{ subtotal() | currency:'USD' }}</strong>
+      </div>
+    </div>
+
+    <div class="summary-actions">
+      <a routerLink="/checkout" class="btn btn-primary">Перейти до оформлення</a>
+      <a routerLink="/products" class="btn btn-light">Продовжити покупки</a>
+    </div>
+  </aside>
+</div>

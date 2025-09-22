@@ -1,1 +1,118 @@
-<p>checkout-page works!</p>
+<h1 class="page-title">Оформлення</h1>
+
+
+<div *ngIf="items().length === 0" class="empty">
+  <p>Кошик порожній</p>
+  <a routerLink="/products" class="btn btn-primary">Перейти до каталогу</a>
+</div>
+
+
+<div *ngIf="items().length > 0" class="checkout">
+  
+  <section class="card form">
+    <h2>Дані отримувача</h2>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <div class="grid">
+        <label>
+          <span>Ім’я та прізвище</span>
+          <input type="text" formControlName="name" placeholder="Іван Петренко" />
+          <small *ngIf="invalid('name')">Вкажіть ім’я (мін. 2 символи)</small>
+        </label>
+
+        <label>
+          <span>E-mail</span>
+          <input type="email" formControlName="email" placeholder="you@example.com" />
+          <small *ngIf="invalid('email')">Вкажіть коректний email</small>
+        </label>
+
+        <label>
+          <span>Телефон</span>
+          <input type="tel" formControlName="phone" placeholder="+380..." />
+          <small *ngIf="invalid('phone')">Вкажіть телефон</small>
+        </label>
+
+        <label>
+          <span>Місто</span>
+          <input type="text" formControlName="city" placeholder="Київ" />
+          <small *ngIf="invalid('city')">Вкажіть місто</small>
+        </label>
+
+        <label class="col-2">
+          <span>Адреса</span>
+          <input type="text" formControlName="address" placeholder="вул. Хрещатик, 22" />
+          <small *ngIf="invalid('address')">Вкажіть адресу</small>
+        </label>
+      </div>
+
+      <div class="grid grid-3">
+        <label>
+          <span>Доставка</span>
+          <select formControlName="delivery">
+            <option value="nova_poshta">Нова Пошта</option>
+            <option value="courier">Кур’єр</option>
+            <option value="pickup">Самовивіз</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Оплата</span>
+          <select formControlName="payment">
+            <option value="card">Карткою онлайн</option>
+            <option value="cod">Післяплата</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Коментар</span>
+          <input type="text" formControlName="comment" placeholder="Додаткові побажання" />
+        </label>
+      </div>
+
+      
+      <label class="agree-line">
+        <input type="checkbox" formControlName="agree" />
+        <span>Погоджуюсь з умовами продажу</span>
+      </label>
+      <small *ngIf="invalid('agree')" class="agree-err">Підтвердіть згоду</small>
+
+      <button class="btn btn-primary wide" type="submit" [disabled]="form.invalid || items().length===0">
+        Підтвердити замовлення
+      </button>
+    </form>
+  </section>
+
+  
+  <aside class="card summary">
+    <h2>Ваше замовлення</h2>
+
+    <ul class="list">
+      <li class="row" *ngFor="let ci of items(); trackBy: trackByItem">
+        <img [src]="ci.product.img" [alt]="ci.product.title" />
+        <div class="info">
+          <div class="title">{{ ci.product.title }}</div>
+          <div class="muted">{{ ci.product.short }}</div>
+          <div class="qty">
+            <button (click)="dec(ci)" aria-label="менше">−</button>
+            <span>{{ ci.qty }}</span>
+            <button (click)="inc(ci)" aria-label="більше">+</button>
+            <a class="remove" (click)="remove(ci.product.id)">Видалити</a>
+          </div>
+        </div>
+        <div class="price">{{ ci.product.price | currency:'USD' }}</div>
+      </li>
+    </ul>
+
+    <div class="totals">
+      <div><span>Проміжний підсумок</span><strong>{{ subtotal() | currency:'USD' }}</strong></div>
+      <div><span>Доставка</span><strong>{{ shipping() | currency:'USD' }}</strong></div>
+      <div class="total"><span>Разом</span><strong>{{ total() | currency:'USD' }}</strong></div>
+    </div>
+
+  
+    <div class="summary-actions">
+      <button class="btn btn-primary" (click)="submit()" [disabled]="form.invalid">Оформити</button>
+      <a routerLink="/products" class="btn btn-light">Продовжити покупки</a>
+    </div>
+  </aside>
+</div>
